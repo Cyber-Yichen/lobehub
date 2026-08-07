@@ -19,6 +19,7 @@ import ComposioAuthorizationList from './features/ComposioAuthorizationList';
 import EmailRow from './features/EmailRow';
 import FullNameRow from './features/FullNameRow';
 import InterestsRow from './features/InterestsRow';
+import PasskeyList from './features/PasskeyList';
 import PasswordRow from './features/PasswordRow';
 import ProfileRow from './features/ProfileRow';
 import SSOProvidersList from './features/SSOProvidersList';
@@ -118,6 +119,15 @@ const ProfileSetting = ({ showSettingHeader = true }: ProfileSettingProps) => {
               <Divider style={{ margin: 0 }} />
               <ProfileRow anchor={'profile-connected-accounts'} label={t('profile.sso.providers')}>
                 <SSOProvidersList />
+              </ProfileRow>
+            </>
+          )}
+
+          {isLogin && !isDesktop && (
+            <>
+              <Divider style={{ margin: 0 }} />
+              <ProfileRow anchor={'profile-passkeys'} label={t('profile.passkey.title')}>
+                <PasskeyList />
               </ProfileRow>
             </>
           )}
