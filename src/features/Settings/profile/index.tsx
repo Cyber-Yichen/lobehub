@@ -47,6 +47,7 @@ const ProfileSetting = ({ showSettingHeader = true }: ProfileSettingProps) => {
   const isLoadedAuthProviders = useUserStore(authSelectors.isLoadedAuthProviders);
   const fetchAuthProviders = useUserStore((s) => s.fetchAuthProviders);
   const enableComposio = useServerConfigStore(serverConfigSelectors.enableComposio);
+  const enablePasskey = useServerConfigStore(serverConfigSelectors.enablePasskey);
   const disableEmailPassword = useServerConfigStore(serverConfigSelectors.disableEmailPassword);
   const [servers, isServersInit, useFetchUserComposioConnections] = useToolStore((s) => [
     s.composioServers,
@@ -123,7 +124,7 @@ const ProfileSetting = ({ showSettingHeader = true }: ProfileSettingProps) => {
             </>
           )}
 
-          {isLogin && !isDesktop && (
+          {isLogin && !isDesktop && enablePasskey && (
             <>
               <Divider style={{ margin: 0 }} />
               <ProfileRow anchor={'profile-passkeys'} label={t('profile.passkey.title')}>
